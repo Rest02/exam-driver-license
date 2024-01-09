@@ -1,39 +1,43 @@
 import { examen } from "../examen";
 import React, { useEffect, useState } from "react";
 
-
 function ListQuestions() {
+  const [preguntas, setPreguntas] = useState([]);
+  const [puntos, setPuntos] = useState(0);
+  const [preguntaRespondida, setPreguntaRespondida] = useState([]);
 
+  useEffect(() => {
+    setPreguntas(examen);
+  }, []);
 
-  const [preguntas, setPreguntas] = useState([])
-  useEffect(()=>{
-    setPreguntas(examen)
-  },[])
-
-
-  function esCorrecta(){
-    
+  function correcion(opcion, e) {
+    if (opcion.isCorrect == true) {
+      alert("Es correcta");
+      setPuntos(puntos + 1);
+      setPreguntas(preguntas.filter((s) => s.pregunta !== e.pregunta));
+    } else {
+      alert("Es incorrecta");
+      setPreguntas(preguntas.filter((s) => s.pregunta !== e.pregunta))
+      if (puntos == 0) {
+        console.log("Tiene 0 puntos");
+      } else {
+        setPuntos(puntos - 1);
+      }
+    }
   }
-
-
 
   return (
     <div>
       {preguntas.map((e) => (
         <div key={e.pregunta}>
           <p>{e.pregunta}</p>
-          <li>
-            <button onClick={()=>console.log("hola")}>{e.opcion_A}</button>
-          </li>
-          <li>
-            <button>{e.opcion_B}</button>
-          </li>
-          <li>
-            <button>{e.opcion_C}</button>
-          </li>
-          <li>
-            <button>{e.opcion_D}</button>
-          </li>
+          <ul>
+            {e.opciones.map((a, index) => (
+              <li key={index}>
+                <button onClick={() => correcion(a, e)}>{a.opcion}</button>
+              </li>
+            ))}
+          </ul>
         </div>
       ))}
     </div>
