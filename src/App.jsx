@@ -1,7 +1,10 @@
 import "./App.css";
+import ListQuestions from './components/ListQuestions'
 
 function App() {
-  return <>hola</>;
+  return <>
+    <ListQuestions/>
+  </>;
 }
 
 export default App;
