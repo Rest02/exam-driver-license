@@ -15,16 +15,29 @@ function ListQuestions() {
       alert("Es correcta");
       setPuntos(puntos + 1);
       setPreguntas(preguntas.filter((s) => s.pregunta !== e.pregunta));
+      setPreguntaRespondida([...preguntaRespondida, e])
     } else {
       alert("Es incorrecta");
       setPreguntas(preguntas.filter((s) => s.pregunta !== e.pregunta))
-      if (puntos == 0) {
-        console.log("Tiene 0 puntos");
-      } else {
-        setPuntos(puntos - 1);
-      }
+      setPreguntaRespondida([...preguntaRespondida, e])
+
     }
   }
+
+
+
+
+
+
+  const mostrarResultado = () => {
+    if(preguntas.length == 0){
+      return <div>Haz finalizado el cuestionaro , tu puntuacion es de {puntos} punto/s de 35
+      <button>Ver correción </button>
+      </div>
+      
+    }
+  }
+
 
   return (
     <div>
@@ -40,6 +53,9 @@ function ListQuestions() {
           </ul>
         </div>
       ))}
+
+      {mostrarResultado()}
+
     </div>
   );
 }
