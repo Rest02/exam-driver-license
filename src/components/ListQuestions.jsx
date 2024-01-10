@@ -1,4 +1,5 @@
 import { examen } from "../examen";
+import RandomQuestions from './RandomQuestions'
 import React, { useEffect, useState } from "react";
 
 function ListQuestions() {
@@ -44,10 +45,6 @@ function ListQuestions() {
   }
 
 
-
-
-
-
   const mostrarResultado = () => {
     if(preguntas.length == 0){
       return <div>Haz finalizado el cuestionaro , tu puntuacion es de {puntos} punto/s de 35
@@ -57,23 +54,15 @@ function ListQuestions() {
   }
 
 
+  
+
+
+
   return (
     <div>
-      {preguntas.map((e) => (
-        <div key={e.pregunta}>
-          <p>{e.pregunta}</p>
-          <ul>
-            {e.opciones.map((a, index) => (
-              <li key={index}>
-                <button onClick={() => correcion(a, e)}>{a.opcion}</button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-
+      <RandomQuestions correcion = {correcion} preguntas = {preguntas}/>
+  
       {mostrarResultado()}
-
     </div>
   );
 }
