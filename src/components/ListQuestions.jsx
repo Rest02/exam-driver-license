@@ -11,9 +11,10 @@ function ListQuestions() {
   const [puntos, setPuntos] = useState(0);
   const [preguntaRespondida, setPreguntaRespondida] = useState([]);
   const [eleccion, setEleccion] = useState([]);
+  const [estadoBoton, setEstadoBoton] = useState(false);
 
   useEffect(() => {
-    setPreguntas(obtenerPreguntasAleatorias(examen, 5));
+    setPreguntas(obtenerPreguntasAleatorias(examen, 6));
   }, []);
 
   const obtenerPreguntasAleatorias = (elExamen, cantidad) => {
@@ -83,13 +84,22 @@ function ListQuestions() {
     ]);
   };
 
+  const eventHandler = () => {
+    setEstadoBoton(true);
+  };
+
   const mostrarResultado = () => {
     if (preguntas.length == 0) {
       return (
         <div>
           Haz finalizado el cuestionaro , tu puntuacion es de {puntos} punto/s
           de 35
-          <button>Ver correción</button>
+          <button onClick={() => eventHandler()}>Ver correción</button>
+          {estadoBoton && (
+            <div>
+              <h1>Aqui listar la correcion</h1>
+            </div>
+          )}
         </div>
       );
     }
