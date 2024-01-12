@@ -58,5 +58,25 @@ export const examen = [
             {opcion: "Una columna de dirección colapsable. " , isCorrect: false},
             {opcion: "Un asiento con apoya-cabeza ajustado en forma apropiada. ." , isCorrect: true}]
          
+    },
+    {
+        pregunta: "Es esencial que la presión de los neumáticos sea chequeada regularmente. ¿Cuándo se debe hacer esto?",
+        id:7,
+        opciones: [        
+            {opcion: "Después de un viaje largo. ", isCorrect: false},
+            {opcion: "Después de conducir a alta velocidad." , isCorrect: false},
+            {opcion: "Cuando los neumáticos están fríos." , isCorrect: true},
+            {opcion: "Cuando los neumáticos están calientes." , isCorrect: false}]
+         
+    },
+    {
+        pregunta: "La presión de los neumáticos debe revisarse:",
+        id:8,
+        opciones: [        
+            {opcion: "Cuando los neumáticos están fríos. ", isCorrect: true},
+            {opcion: "Cuando los neumáticos están calientes" , isCorrect: false},
+            {opcion: "En cualquier momento, porque da igual que los neumáticos estén fríos o calientes." , isCorrect: false}
+        ]
+         
     }
 ]
