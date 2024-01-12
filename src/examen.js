@@ -51,7 +51,7 @@ export const examen = [
     },
     {
         pregunta: "En un automóvil, ¿cuál de los siguientes elementos reduce el riesgo de lesiones de cuello en una colisión?",
-        id:5,
+        id:6,
         opciones: [        
             {opcion: "Un asiento dotado de air-bag (bolsa de aire).", isCorrect: false},
             {opcion: "Los frenos ABS. " , isCorrect: false},

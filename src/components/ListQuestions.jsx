@@ -14,7 +14,7 @@ function ListQuestions() {
   const [estadoBoton, setEstadoBoton] = useState(false);
 
   useEffect(() => {
-    setPreguntas(obtenerPreguntasAleatorias(examen, 6));
+    setPreguntas(obtenerPreguntasAleatorias(examen, 1));
   }, []);
 
   const obtenerPreguntasAleatorias = (elExamen, cantidad) => {
@@ -22,7 +22,7 @@ function ListQuestions() {
     const preguntasAleatorias = [];
 
     for (let j = 0; j < cantidad; j++) {
-      const randomIndex = random(0, elExamen.length - 1);
+      const randomIndex = random(0, elExamen.length - 6);
       const pregunta = elExamen[randomIndex];
 
       if (!numberHistory.includes(randomIndex)) {
@@ -97,7 +97,38 @@ function ListQuestions() {
           <button onClick={() => eventHandler()}>Ver correción</button>
           {estadoBoton && (
             <div>
-              <h1>Aqui listar la correcion</h1>
+              {preguntaRespondida.map((e) => (
+                <div key={e.pregunta}>
+                  <p>{e.pregunta}</p>
+                  <ul>
+                    {e.opciones.map((a, index) => (
+                      <li key={index}>
+                        <button>{a.opcion}</button>
+                      </li>
+                    ))}
+                  </ul>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Correción</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        {eleccion.map((f) => (
+                          <td key={f.id}>Correcta : {f.respuestaReal}</td>
+                        ))}
+                      </tr>
+                      <tr>
+                        {eleccion.map((f) => (
+                          <td key={f.respuesta}>Selección : {f.respuesta}</td>
+                        ))}
+                      </tr>
+                    </tbody>
+                  </table>
+                  <hr />
+                </div>
+              ))}
             </div>
           )}
         </div>
